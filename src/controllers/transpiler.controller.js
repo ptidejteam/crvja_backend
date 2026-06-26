@@ -1,4 +1,4 @@
-import { processCode } from '../services/transpiler.service.js';
+import { processCode } from '#root/src/services/transpiler.service.js';
 
 export const transpileCode = (req, res) => {
   // 1. Extract data from the request body
@@ -17,7 +17,6 @@ export const transpileCode = (req, res) => {
 
   // 4. Send the successful HTTP response
   return res.status(200).json({
-    success: true,
     message: '(AMOS -> JavaScript) Successfully transpiled.',
     data: {
       jsTranspiledCode: jsTranspiledCode

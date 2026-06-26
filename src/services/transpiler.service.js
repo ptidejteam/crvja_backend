@@ -1,4 +1,5 @@
-import useAMOSParser from "../transpiler/useAmosParser.js"
+import useAMOSParser from "#root/src/transpiler/useAmosParser.js"
+
 
 /**
  * Processes the dummy "AMOS" code by returning its length.
@@ -6,10 +7,7 @@ import useAMOSParser from "../transpiler/useAmosParser.js"
  * @returns {number} - The number of characters in the code.
  */
 export const processCode = (amosCode) => {
-  // return amosCode.length;
 
-  const code = useAMOSParser(amosCode);
-  // expect(lexErrs.errors).toEqual([]);
-  // expect(parseErrs.errors).toEqual([]);
-  return code;
+  const transpiledCode = useAMOSParser(amosCode);
+  return transpiledCode;
 };

@@ -1,4 +1,5 @@
-import AMOSListener from "./grammar/generated/AMOSListener.js";
+// import AMOSListener from "./grammar/generated/AMOSListener.js";
+import AMOSListener from "#root/src/transpiler/grammar/generated/AMOSListener.js";
 
 class AmosToJavaScriptTranslator extends AMOSListener {
   constructor() {

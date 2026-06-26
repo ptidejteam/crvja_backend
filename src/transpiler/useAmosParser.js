@@ -1,11 +1,12 @@
 import antlr4 from "antlr4";
-import AmosTranspiler from "./AmosTranspiler.js";
-import AMOSParser from "./grammar/generated/AMOSParser.js";
-import AMOSLexer from "./grammar/generated/AMOSLexer.js";
+import AmosTranspiler from "#root/src/transpiler/AmosTranspiler.js";
+import AMOSParser from "#root/src/transpiler/grammar/generated/AMOSParser.js";
+import AMOSLexer from "#root/src/transpiler/grammar/generated/AMOSLexer.js";
+import CollectingErrorListener from "#root/src/transpiler/ErrorListener.js";
+
 // import prettier from "prettier/standalone";
 // import babelPlugin from "prettier/plugins/babel";
 // import estreePlugin from "prettier/plugins/estree";
-import CollectingErrorListener from "./ErrorListener.js";
 
 export default function useAMOSParser(amosCode) {
   const chars = new antlr4.InputStream(amosCode);
@@ -20,7 +21,16 @@ export default function useAMOSParser(amosCode) {
   const walker = new antlr4.tree.ParseTreeWalker();
   walker.walk(translator, tree);
 
+  const lexErrs = "";
+  const parseErrs = "";
+
   const translatedJsCode = translator.getJavaScript();
 
-  return translatedJsCode;
+  const response = {
+    lexErrs: lexErrs,
+    parseErrs: parseErrs,
+    translatedJsCode: translatedJsCode,
+  }
+
+  return response;
 }

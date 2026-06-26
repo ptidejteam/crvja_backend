@@ -1,5 +1,5 @@
 import express from 'express';
-import { transpileCode } from '../controllers/transpiler.controller.js';
+import { transpileCode } from '#root/src/controllers/transpiler.controller.js';
 
 const router = express.Router();
  
