@@ -1,13 +1,13 @@
-import useAMOSParser from "#root/src/transpiler/useAmosParser.js"
+import transpileAmosToJS from "#root/src/transpiler/transpileAmosToJS.js"
 
 
 /**
  * Processes the dummy "AMOS" code by returning its length.
- * @param {string} amosCode - The code to process.
+ * @param {string} amosCode - The AMOS Basic code to transpile.
  * @returns {number} - The number of characters in the code.
  */
-export const processCode = (amosCode) => {
+export const transpileCode = (amosCode) => {
 
-  const transpiledCode = useAMOSParser(amosCode);
-  return transpiledCode;
+  const transpileResult = transpileAmosToJS(amosCode);
+  return transpileResult;
 };

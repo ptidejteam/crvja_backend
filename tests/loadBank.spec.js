@@ -1,11 +1,19 @@
-import translateAmos from "./helpers/translate.mjs";
+import transpileAmosToJS from "#root/src/transpiler/transpileAmosToJS.js";
 
 function translate(code) {
-  const [lexErrs, parseErrs, normalizedJS] = translateAmos(code);
-  expect(lexErrs.errors).toEqual([]);
-  expect(parseErrs.errors).toEqual([]);
-  return normalizedJS.replace(/\s+/g, " ").trim();
+    const {
+    lexicalErrors: lexicalErrors,
+    syntaxErrors: syntaxErrors,
+    translatedCode: translatedCode,
+  } = useAMOSParser(code);
+ 
+  expect(lexicalErrors.errors).toEqual([]);
+  expect(syntaxErrors.errors).toEqual([]);
+  
+  const normalizedJS = translatedCode.replace(/\s+/g, " ").trim();
+  return normalizedJS;
 }
+
 
 test("load_banks without bank id", () => {
   const amosBasicCode = `
